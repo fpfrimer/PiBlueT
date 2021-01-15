@@ -22,7 +22,10 @@ Com o advento de diversas ferramentas de desenvolvimento para sistemas embarcado
     - [Alterando a senha do usuário pi](#alterando-a-senha-do-usuário-pi)
     - [Atualizando o sistema](#atualizando-o-sistema)
     - [O comando `raspi-config`](#o-comando-raspi-config)
-  - [Criando uma pasta compartilhada](#criando-uma-pasta-compartilhada)
+  - [Opcional - Criando uma pasta compartilhada com o _Windows_](#opcional---criando-uma-pasta-compartilhada-com-o-windows)
+    - [Samba/CIFS](#sambacifs)
+    - [Instalando suporte CIFS/Samba no Raspberry Pi](#instalando-suporte-cifssamba-no-raspberry-pi)
+    - [Acessando a pasta no _Windows 10_](#acessando-a-pasta-no-windows-10)
 
 ## Objetivo
 
@@ -222,5 +225,81 @@ Em _System Options_ é possível:
 
 Em _Interface options_, é possível habilitar o acesso remoto de diversos periféricos do Raspberry Pi, como é o caso das portas SPI (_Serial Peripheral Interface_), I2C (_Inter-Integrated Circuit_), GPIO (_General Purpose Input Output_), serial e _1-wire_. Também é uma forma de habilitar o VNC caso queira acessar a área de trabalho remotamente. Dessa forma, o usuário pode habilitar aqui os dispositivos que necessitará em seus projetos.
 
-## Criando uma pasta compartilhada
+Seguindo estas instruções, o usuário terá acesso quase que total ao Raspberry Pi OS. É possível criar códigos, compilar, instalar aplicações, configurar o sistema e atualizar. Obviamente, todas essas ações devem ser feitas por linha de comando. Dessa forma, é importante ler, pesquisar e se aprofundar no assunto.
 
+## Opcional - Criando uma pasta compartilhada com o _Windows_
+
+A criação de uma pasta compartilhada pode ajudar no desenvolvimento de projetos, visto que os códigos podem ser escritos em editores mais sofisticados em um _laptop_ ou PC. Além disso, os códigos também podem ser compilados remotamente, utilizando um _hardware_ mais potente.
+
+### Samba/CIFS
+
+Samba é a implementação do protocolo SMB/CIFS utilizado pelo _Windows_ para possibilitar acesso remoto à arquivos, impressoras, portas seriais, entre outros.
+
+Essa seção irá mostrar como compartilhar uma pasta do Raspberry Pi com o _Windows_. As instruções mostradas aqui são baseadas no tutorial disponibilizado no [site oficial](https://www.raspberrypi.org/documentation/remote-access/samba.md) do projeto Raspberry Pi.
+
+### Instalando suporte CIFS/Samba no Raspberry Pi
+
+Primeiramente, atualize os repositórios do Raspberry Pi:
+
+```
+sudo apt-get update
+```
+
+Instale os pacotes necessários:
+
+```
+sudo apt install samba samba-common-bin smbclient cifs-utils
+```
+
+Crie uma pasta, de preferencia no diretório `home`:
+
+```
+cd ~
+mkdir compartilhado
+```
+
+Posteriormente, é preciso "dizer" ao samba para compartilhar esta pasta, utilizando o arquivo de configuração:
+
+```
+sudo nano /etc/samba/smb.conf
+```
+
+Este comando abrirá o arquivo `smb.conf` no editor nano. Dessa forma, adicione o seguinte texto ao final do arquivo:
+
+```
+[compartilhado]
+    path = /home/pi/compartilhado
+    read only = no
+    public = yes
+    writable = yes
+```
+
+No mesmo arquivo, procure uma linha `workgroup` e, se necessário, mude o nome do grupo de trabalho da rede do _Windows_
+
+Salve e feche o arquivo e reinicie o samba:
+
+```
+sudo service smbd restart
+```
+
+### Acessando a pasta no _Windows 10_
+
+Para acessar a esta pasta no _Windows_ 10, abra o explorador de arquivos (Win+E), clique em "Este Computador" e depois em "Mapear unidade de rede" que fica na parte de cima da janela, assim como mostra a Figura 9.
+
+|__Figura 9 - Mapeando unidade de rede__|
+|---|
+|![mapear](figs/mapear.png)|
+
+Abrirá uma janela igual ao da Figura 10. Dessa forma, escolha a letra da unidade e entre com o endereço da pasta na rede. 
+
+|__Figura 10 - Mapeando unidade de rede__|
+|---|
+|![mapear2](figs/mapear2.png)|
+
+Neste exemplo, o endereço da pasta é `\\raspberrypi\compartilhado`. Alternativamente, também é possível substituir `raspberrypi` pelo endereço IP. Se tudo estiver certo, entre com o nome do usuário `pi` (não é necessário entrar com a senha). Isso dará acesso direto à pasta criada no Raspberry Pi, assim como pode ser visto na Figura 11.
+
+|__Figura 11 - Pasta compartilhada__|
+|---|
+|![pasta](figs/pasta.png)|
+
+Agora que a pasta está criada é possível editar os códigos diretamente de um PC convencional, assim como transferir arquivos.

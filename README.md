@@ -1,12 +1,14 @@
-# Configurando seu Raspberry Pi para o desenvolvimento de sistemas embarcados (com foco em IoT)
+# Otimizando o desenvolvimento de sistemas embarcados com o Raspberry Pi 
 
 De forma simplificada, pode-se dizer que sistemas embarcados (ou embutidos) são aqueles que possuem um computador completamente encapsulado e dedicado ao funcionamento do aparato que ele controla. Exemplos: eletrodomésticos; dispositivos de armazenamento como SSDs (_Solid State Drives_) e pen-drives; drones; sistemas de aquisição de dados; entre outros.
 
-Com o advento de diversas ferramentas de desenvolvimento para sistemas embarcados, assim como o Arduino e o Raspberry Pi, as possibilidades de novos e criativos projetos se expandiram consideravelmente. Dessa forma, esse tutorial possui o intuito de auxiliar àqueles que desejam configurar o Raspberry Pi de forma a facilitar o desenvolvimento de sistemas embarcados (incluindo o dispositivos com o conceito de IoT - _Internet of Things_).
+Com o advento de diversas ferramentas de desenvolvimento para sistemas embarcados, assim como o Arduino e o Raspberry Pi, as possibilidades de novos e criativos projetos se expandiram consideravelmente. O Raspberry Pi é uma série computadores de tamanho reduzido feitos em uma única placa de circuito (_Single Board Computer_ ou SBC). Os modelos principais possuem o tamanho de um cartão de crédito. Além disso, é compatível com diversas distribuições do sistema operacional Linux, como é o caso do Ubuntu e do Raspberry Pi OS.
+
+No entanto, apesar do Raspberry Pi ser um computador completo, onde pode-se conectar teclado, mouse e monitor, nem sempre é o ideal trabalhar diretamente no dispositivo devido a suas limitações ou a forma como ele é utilizado no projeto. Isso fica mais evidente ao se utilizar os modelos mais antigos ou o Raspberry Pi zero, cujo o poder de processamento é inferior. Dessa forma, esse tutorial possui o intuito de auxiliar àqueles que desejam configurar o Raspberry Pi de forma a facilitar o desenvolvimento de sistemas embarcados, permitindo o acesso remoto ao terminal do sistema operacional e o compartilhamento de arquivos.
 
 ## Sumário
 
-- [Configurando seu Raspberry Pi para o desenvolvimento de sistemas embarcados (com foco em IoT)](#configurando-seu-raspberry-pi-para-o-desenvolvimento-de-sistemas-embarcados-com-foco-em-iot)
+- [Otimizando o desenvolvimento de sistemas embarcados com o Raspberry Pi](#otimizando-o-desenvolvimento-de-sistemas-embarcados-com-o-raspberry-pi)
   - [Sumário](#sumário)
   - [Objetivo](#objetivo)
   - [Requisitos](#requisitos)
@@ -26,6 +28,7 @@ Com o advento de diversas ferramentas de desenvolvimento para sistemas embarcado
     - [Samba/CIFS](#sambacifs)
     - [Instalando suporte CIFS/Samba no Raspberry Pi](#instalando-suporte-cifssamba-no-raspberry-pi)
     - [Acessando a pasta no _Windows 10_](#acessando-a-pasta-no-windows-10)
+  - [Conclusão](#conclusão)
 
 ## Objetivo
 
@@ -309,3 +312,7 @@ Neste exemplo, o endereço da pasta é `\\raspberrypi\compartilhado`. Alternativ
 |![pasta](figs/pasta.png)|
 
 Agora que a pasta está criada é possível editar os códigos diretamente de um PC convencional, assim como transferir arquivos.
+
+## Conclusão
+
+Este tutorial mostrou como otimizar o Raspberry Pi para o desenvolvimento de projetos de sistemas embarcados. Com os procedimentos apresentados, é possível acessar o terminal remotamente e realizar a troca de arquivos através de uma pasta compartilhada.

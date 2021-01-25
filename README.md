@@ -258,6 +258,12 @@ cd ~
 mkdir compartilhado
 ```
 
+Adicione permissão de leitura e escrita na pasta:
+
+```
+chmod 777 compartilhado
+```
+
 Posteriormente, é preciso "dizer" ao samba para compartilhar esta pasta, utilizando o arquivo de configuração:
 
 ```

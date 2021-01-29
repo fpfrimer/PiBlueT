@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Otimizando o desenvolvimento de sistemas embarcados com o Raspberry Pi 
 
 De forma simplificada, pode-se dizer que sistemas embarcados (ou embutidos) são aqueles que possuem um computador completamente encapsulado e dedicado ao funcionamento do aparato que ele controla. Exemplos: eletrodomésticos; dispositivos de armazenamento como SSDs (_Solid State Drives_) e pen-drives; drones; sistemas de aquisição de dados; entre outros.

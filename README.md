@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Otimizando o desenvolvimento de sistemas embarcados com o Raspberry Pi 
 
 De forma simplificada, pode-se dizer que sistemas embarcados (ou embutidos) são aqueles que possuem um computador completamente encapsulado e dedicado ao funcionamento do aparato que ele controla. Exemplos: eletrodomésticos; dispositivos de armazenamento como SSDs (_Solid State Drives_) e pen-drives; drones; sistemas de aquisição de dados; entre outros.
@@ -316,3 +317,4 @@ Agora que a pasta está criada é possível editar os códigos diretamente de um
 ## Conclusão
 
 Este tutorial mostrou como otimizar o Raspberry Pi para o desenvolvimento de projetos de sistemas embarcados. Com os procedimentos apresentados, é possível acessar o terminal remotamente e realizar a troca de arquivos através de uma pasta compartilhada.
+
